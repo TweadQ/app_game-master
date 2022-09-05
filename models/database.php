@@ -1,6 +1,6 @@
 <?php
 
-require("helpers/functions.php");
+require("utils/helpers/functions.php");
 
 /**
 * Get connexion with database
@@ -89,5 +89,37 @@ function getGame(): array
         header("location: index.php");
     }
     return $game;
+}
+
+/**
+ * This function delete an item
+ * @return void
+ */
+function delete(): void
+{
+    $pdo = getPDO();
+    // 2- recup' id ds url & nettoie
+    $id = clear_xss($_GET["id"]);
+    // 3- requette vers BDD
+    $sql = "DELETE FROM jeux2 WHERE id=?";
+    //4- prepare ma requette
+    $query = $pdo->prepare($sql);
+    // 5- on execute le requette
+    $query->execute([$id]);
+    //redirect
+    $_SESSION["success"] = "Le jeu es bien supprimer.";
+    header("location:index.php");
+}
+
+function createGame()
+{
+    //2-je fais les failles xss
+    //3-validation de chaque input
+    require_once("utils/security-form/include.php");
+    debug_array($error);
+    // //4- if no error
+    if (count($error) == 0) {
+        require_once("sql/addGame-sql.php");
+    }
 }
 

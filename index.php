@@ -2,6 +2,7 @@
 /**
  * This file show the home page
  */
+session_start();
 $title = "Accueil"; //title for current page
  /**
   * Get all games from models and stock in array $games
