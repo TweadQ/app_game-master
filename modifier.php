@@ -6,7 +6,7 @@ $title = "modifier"; //title for current page
 include('partials/_header.php');
 include("helpers/functions.php");
 // include PDO pour la connexion BDD
-require_once("helpers/pdo.php");
+require_once("models/database.php");
 // debug_array($_GET)
 
 //1-verifie id existant et que c'est un int
@@ -14,7 +14,7 @@ if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
     // 2- je nettoie mon id contre xss
     $id = clear_xss($_GET['id']);
     // 3- requette (query in english) vers BDD
-    $sql = "SELECT * FROM jeux WHERE id=:id";
+    $sql = "SELECT * FROM jeux2 WHERE id=:id";
     // 4- préparation de la requette
     $query = $pdo->prepare($sql);
     // 5- securiser la requette contre injection sql
