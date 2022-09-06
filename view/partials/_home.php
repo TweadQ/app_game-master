@@ -50,7 +50,7 @@
                                     <img src="img/oeil.png" alt="eye" class="w-4">
                                 </a>
                             </td>
-                            <td><a href="modifier.php?id=<?= $game["id"] ?>&name=<?= $game["name"] ?>" class="btn btn-success text-white">Modifier</a></td>
+                            <td><a href="update.php?id=<?= $game["id"] ?>&name=<?= $game["name"] ?>" class="btn btn-success text-white">Modifier</a></td>
                             <td><?php include("view/partials/_modal.php") ?></td>
                         </tr>
                     <?php endforeach ?>

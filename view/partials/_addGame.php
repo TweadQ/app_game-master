@@ -1,8 +1,8 @@
-<section class="py-16 ">
+<section class="py-16">
     <a href="index.php" class="text-blue-500 text-sm">
         <- retour </a>
             <?php $main_title = "Ajouter un jeu";
-            include("partials/_h1.php")
+            include("view/partials/_h1.php")
             ?>
             <form action="" method="POST" class="grid place-items-center bg-gray-100 mx-96 py-10 my-16 gap-y-4 rounded-xl" enctype="multipart/form-data">
                 <!--input name  -->

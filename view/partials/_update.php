@@ -1,63 +1,10 @@
-<!-- header -->
-<?php
-// start session
-session_start();
-$title = "modifier"; //title for current page
-// include PDO pour la connexion BDD
-require_once("models/database.php");
-// debug_array($_GET)
-
-//1-verifie id existant et que c'est un int
-if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
-    // 2- je nettoie mon id contre xss
-    $id = clear_xss($_GET['id']);
-    // 3- requette (query in english) vers BDD
-    $sql = "SELECT * FROM jeux2 WHERE id=:id";
-    // 4- préparation de la requette
-    $query = $pdo->prepare($sql);
-    // 5- securiser la requette contre injection sql
-    $query->bindValue(':id', $id, PDO::PARAM_INT);
-    // 6- executer la requette vers la BDD
-    $query->execute();
-    // 7- on stock tout ds une variable
-    $game = $query->fetch();
-    // debug_array($game);
-    // $game = [];
-
-    if (!$game) {
-        $_SESSION["error"] = "Ce jeu n'est pas disponible.";
-        header("Location: index.php");
-    }
-} else {
-    $_SESSION["error"] = "URL invalide";
-    header("Location: index.php");
-}
-
-// creation array error
-$error = [];
-$errorMessage = "<span class=text-red-500>*Ce champs est obligatoire</span>";
-// variable success
-$success = false;
-// 1-je verifie si le formulaire est soumis
-if (!empty($_POST["submited"])) {
-    //2-je fais les failles xss
-    //3-validation de chaque input
-    require_once("validation-formulaire/include.php");
-
-    // //4- if no error
-    if (count($error) == 0) {
-        require_once("sql/updateGame-sql.php");
-    }
-}
-?>
-
 <div class="pt-10">
     <a href="index.php" class="text-blue-500 text-sm">
         <- retour </a>
             <?php $main_title = "Modifier le jeu";
-            include("partials/_h1.php")
+            include("view/partials/_h1.php")
             ?>
-            <form action="" method="POST" class="grid place-items-center bg-gray-100 mx-96 py-10 my-16 gap-y-4 rounded-xl">
+            <form action="" method="POST" class="grid place-items-center bg-gray-100 mx-96 py-10 my-16 gap-y-4 rounded-xl" enctype="multipart/form-data">
                 <!--input name  -->
                 <div class="mb-4">
                     <label for="name" class="font-semibold text-blue-500">name</label>
