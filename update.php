@@ -11,11 +11,11 @@ $errorMessage = "<span class=text-red-500>*Ce champs est obligatoire</span>";
 
 if (!empty($_POST["submited"])) 
 {
-    if(empty($Files["url_img"]["name"])) 
+    require_once("utils/security-form/include.php");
+    if(count($error) == 0) 
     {
-        $url_img = $game["url_img"];
+        update($name, $price, $note, $description, $genre_clear, $plateforms_clear, $PEGI, $url_img);
     }
-    update($error);
 }
 
 require("view/updatePage.php");

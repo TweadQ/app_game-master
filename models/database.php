@@ -140,10 +140,9 @@ function create($name, $price, $note, $description, $genre_clear, $plateforms_cl
         die;
 }
 
-function update($error)
+function update($name, $price, $note, $description, $genre_clear, $plateforms_clear, $PEGI, $url_img)
 {
     require_once("utils/security-form/include.php");
-    if (count($error) == 0) {
     $pdo = getPDO();
     $id = getId();
     $sql = "UPDATE jeux2 SET name = :name, price = :price, genre = :genre, url_img = :url_img, note = :note, plateforms = :plateforms, description = :description, PEGI = :PEGI, updated_at = NOW() WHERE id= :id";
@@ -166,5 +165,5 @@ function update($error)
     header("Location: index.php");
     die;
 }
-}
+
 
