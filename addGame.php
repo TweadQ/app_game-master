@@ -17,8 +17,12 @@ $errorMessage = "<span class=text-red-500>*Ce champs est obligatoire</span>";
 
 
 // 1-je verifie si le formulaire est soumis
-if (!empty($_POST["submited"]) && isset($_FILES["url_img"]) && $_FILES["url_img"]["error"] == 0) {
-    create($error);
+if (!empty($_POST["submited"])) {
+    require_once("utils/security-form/include.php");
+    if(count($error) == 0) 
+    {
+        create($name, $price, $note, $description, $genre_clear, $plateforms_clear, $PEGI, $url_img);
+    }
 }
 
 /**

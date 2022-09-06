@@ -1,8 +1,10 @@
 <?php
+if (isset($_FILES["url_img"]) && $_FILES["url_img"]["error"] == 0) {
 $files_name = $_FILES["url_img"]["name"];
 $files_size = $_FILES["url_img"]["size"];
 $files_tmp = $_FILES["url_img"]["tmp_name"];
 $files_type = $_FILES["url_img"]["type"];
+
 
 
 // 2-verifie la taille de l'image
@@ -21,4 +23,5 @@ if ($files_size <= $sizeMax) {
     }
 } else {
     $error["url_img"] = "<span class='text-red-500'>Fichier trop lourd (Max 2Mo)</span>";
+}
 }

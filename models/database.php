@@ -111,10 +111,9 @@ function delete(): void
     header("location:index.php");
 }
 
-function create($error): void
+function create($name, $price, $note, $description, $genre_clear, $plateforms_clear, $PEGI, $url_img): void
 {
     require_once("utils/security-form/include.php");
-    if (count($error) == 0) {
         $pdo = getPDO();
         //1- ecriture de la requette
         $sql = "INSERT INTO jeux2(name, price, genre, note, plateforms, description, PEGI, created_at, url_img) VALUES(:name, :price, :genre, :note, :plateforms, :description, :PEGI, NOW(), :url_img)";
@@ -139,7 +138,6 @@ function create($error): void
         $_SESSION["success"] = "le jeu a bien été ajouté";
         header("Location: index.php");
         die;
-    }
 }
 
 function update($error)
