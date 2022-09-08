@@ -1,8 +1,9 @@
 <?php
 $title = "Show"; //title for current page
-require_once("models/database.php");
+require_once("models/Game.php");
 
-$game = getGame();
+$model = New Game();
+$game = $model->getGame();
 
 $title = $game['name'];
 /**

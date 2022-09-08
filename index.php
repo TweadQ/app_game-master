@@ -7,8 +7,11 @@ $title = "Accueil"; //title for current page
  /**
   * Get all games from models and stock in array $games
   */
-require_once("models/database.php");
-$games = getAllGames();
+
+require_once("models/Game.php");
+
+$model = New Game();
+$games = $model->getAllGames();
 /**
  * Show view
  */
