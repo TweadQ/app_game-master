@@ -1,10 +1,11 @@
 <?php
+
 namespace Models;
 
 require ("models/Model.php");
 // require ("database.php");
 
-class Game extends Model
+class User extends Model
 {
-    protected $table = "jeux2";
+    protected $table = "users";
 }

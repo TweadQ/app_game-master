@@ -1,5 +1,9 @@
 <?php
 session_start();
-include("models/database.php");
-delete();
+
+require_once("controllers/Game.php");
+
+$controller = new \Controllers\Game();
+$controller->delete();
+
 

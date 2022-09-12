@@ -1,13 +1,10 @@
 <?php
-$title = "Show"; //title for current page
-require_once("models/Game.php");
 
-$model = New Game();
-$game = $model->getGame();
+session_start();
 
-$title = $game['name'];
-/**
- * Show view
- */
-require("view/ShowPage.php");
+require_once("controllers/Game.php");
+
+$controller = new \Controllers\Game();
+$controller->show();
+
 ?>
